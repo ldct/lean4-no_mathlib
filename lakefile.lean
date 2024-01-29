@@ -10,3 +10,5 @@ lean_lib «Lean4NoMathlib» where
 @[default_target]
 lean_exe «lean4-no_mathlib» where
   root := `Main
+
+require std from git "https://github.com/leanprover/std4" @ "main"
