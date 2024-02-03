@@ -64,27 +64,45 @@ by
 
 /-- `∧` is symmetric -/
 example : P ∧ Q → Q ∧ P :=
-begin
-  sorry
-end
+by
+  intro hPQ;
+  apply And.intro;
+  cases hPQ with
+  | intro hp hq => exact hq;
+  cases hPQ with
+  | intro hp hq => exact hp;
 
-example : P → P ∧ true :=
-begin
-  sorry
-end
 
-example : false → P ∧ false :=
-begin
-  sorry
-end
+example : P → P ∧ True :=
+by
+  intro hP;
+  apply And.intro;
+  exact hP;
+  trivial;
 
-/-- `∧` is transitive -/
+example : False → P ∧ False :=
+by
+  intro hF;
+  apply False.elim;
+  exact hF;
+
 example : (P ∧ Q) → (Q ∧ R) → (P ∧ R) :=
-begin
-  sorry,
-end
+by
+  intro hPQ;
+  intro hQR;
+  apply And.intro;
+  cases hPQ with
+  | intro hp hq => exact hp;
+  cases hQR with
+  | intro hq hr => exact hr;
+
 
 example : ((P ∧ Q) → R) → (P → Q → R) :=
-begin
-  sorry,
-end
+by
+  intro h1;
+  intro hP;
+  intro hQ;
+  apply h1;
+  apply And.intro;
+  exact hP;
+  exact hQ;

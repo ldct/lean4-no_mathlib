@@ -122,7 +122,7 @@ by
   intro hnnP;
   by_contra h;
   apply h;
-  apply False.elim;
+  apply False.elim; -- used to be called exfalso / ex_falso?
   apply hnnP;
   exact h;
 
